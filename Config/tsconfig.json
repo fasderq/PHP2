@@ -1,0 +1,9 @@
+{
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "passw": "123456",
+    "dbname": "News",
+    "charset": "utf8"
+  }
+}
