@@ -8,7 +8,6 @@ require __DIR__ . '/../Model.php';
 
 use App\Db;
 
-
 class Article
     extends Model
 
@@ -26,6 +25,7 @@ class Article
         $db = new Db(self::$config);
         $data = $db->query('SELECT * FROM ' . self::$table . ' ORDER BY id DESC LIMIT 3' , [], '\App\Model\Article');
         return $data;
+
 
     }
 
@@ -80,5 +80,5 @@ class Article
 
 }
 
-
+Article::findLastN();
 

@@ -1,7 +1,8 @@
 <?php
 
-require_once __DIR__ . '/autoload.php';
+require __DIR__ . '/autoload.php';
 
-$users = \App\Model\User::findAll();
+$lastnews = \App\Model\Article::findLastN();
 
-var_dump($users);
+
+require __DIR__ . '/View/general.php';

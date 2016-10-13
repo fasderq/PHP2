@@ -17,7 +17,7 @@
 <br>
 
 <div>
-    <a href="/PHP2/Controller/index.php"> Назад </a>
+    <a href="/PHP2/"> Назад </a>
 </div>
 
 </body>
