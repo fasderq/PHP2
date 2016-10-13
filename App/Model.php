@@ -11,7 +11,6 @@ abstract class Model
     public static $config = '';
 
     public static function findAll()
-
     {
         $db = new Db(static::$config);
         $data = $db->query(

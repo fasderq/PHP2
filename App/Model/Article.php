@@ -46,9 +46,24 @@ class Article
         return $sql;
     }
 
+    public function getHeader()
+    {
+        return $this->header;
+    }
+
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
 }
 
-var_dump(Article::findLastN('2'));
+
 
 
