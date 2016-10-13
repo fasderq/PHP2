@@ -11,6 +11,7 @@ abstract class Model
     public static $config = '';
 
     public static function findAll()
+
     {
         $db = new Db(static::$config);
         $data = $db->query(
@@ -18,21 +19,24 @@ abstract class Model
             [],
             static::class
         );
+
         return $data;
+
     }
 
     public static function findById($id)
+
     {
+
         $db = new Db(static::$config);
         $data = $db->query(
-            'SELECT * FROM ' . static::$table . ' WHERE id = ' . $id,
-            [],
+            'SELECT * FROM ' . static::$table . ' WHERE id =:id',
+            [':id' => $id],
             static::class
         );
+
         return $data[0];
 
-
     }
-
 }
 
