@@ -8,25 +8,28 @@
 
 <div>
 
-    <?php foreach ($lastnews as  $text){
+    <?php foreach ($lastnews as $value): ?>
 
-?> <a href="/PHP2/Controller/article.php?id=<?php echo $text->getId()?>">
+         <a href="/PHP2/Controller/article.php?id=<?php echo $value->id ?>">
 
-      <?php echo $text->getHeader(); ?></a>
+        <?php echo $value->header; ?></a>
 
         <br>
         <br>
 
-        <?php echo $text->getArticle(); ?>
-    <br>
-    <br>
+        <?php echo $value->text; ?>
 
-    <?php
-    }
-    ?>
+        <br>
+        <br>
+
+    <?php endforeach; ?>
 
 </div>
 
+<br>
+<br>
+
+<a href="/PHP2/Controller/admin.php"> Админ панель</a>
 
 
 </body>

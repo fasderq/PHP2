@@ -2,18 +2,20 @@
 
 namespace App;
 
+require_once __DIR__ . '/Config.php';
+
 class Db
 
 {
 
     protected $dbh;
 
-    public function __construct($configfile)
+    public function __construct()
 
     {
-        $json = file_get_contents($configfile);
 
-        $cfg = json_decode($json);
+        $config = Config::getInstance();
+        $cfg = $config->getCfg();
 
         $dsn = 'mysql:dbname=' . $cfg->db->dbname . ';host=' . $cfg->db->host . ';charset=' . $cfg->db->charset;
 
@@ -64,6 +66,16 @@ class Db
             return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
 
         }
+    }
+
+    public function lastInsertId()
+    {
+
+        return $this->dbh->lastInsertId();
 
     }
 }
+
+?>
+
+

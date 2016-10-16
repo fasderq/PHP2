@@ -1,0 +1,39 @@
+
+table {
+    width: 100%;
+}
+
+td {
+    width: 50%;
+}
+
+div {
+    margin-top: 10px;
+}
+
+.news {
+    overflow-y: scroll;
+    height: 600px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    border-width: 0px;
+    border: none;
+    text-align: left;
+}
+
+.textarea {
+    display: block;
+    /*border: 3px solid #38c;*/
+    padding: 10px;
+}
+
+textarea {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    text-align: left;
+}

@@ -6,12 +6,12 @@
 </head>
 <body>
 
-<?php  echo $news->getHeader(); ?>
+<?php  echo $news->header; ?>
 
 <br>
 <br>
 
-<?php  echo $news->getArticle(); ?>
+<?php  echo $news->text; ?>
 
 <br>
 <br>

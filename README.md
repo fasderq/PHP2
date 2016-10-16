@@ -1,1 +1,1 @@
-# PHP2
+# PHP2 index.php контроллер
