@@ -7,6 +7,7 @@
 
 </head>
 <body>
+<div id="panel">
 <a href="/PHP2/"> На главную</a>
 <table>
     <tr>
@@ -27,7 +28,7 @@
 
                             ?>"></div>
 
-                        <div><textarea rows="35" name="text"><?php
+                        <div><textarea rows="31" name="text"><?php
 
                                 if (isset($edit->text))
                                 {
@@ -73,6 +74,8 @@
 
                         <?php echo $value->text; ?>
 
+                        <br>
+
                         <button type="submit" name="edit" value="<?php echo $value->id; ?>">Редактировать</button>
                         <button type="submit" name="delete" value="<?php echo $value->id; ?>">Удалить</button>
 
@@ -90,6 +93,6 @@
     </tr>
 
 </table>
-
+</div>
 </body>
 </html>

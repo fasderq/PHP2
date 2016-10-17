@@ -9,7 +9,7 @@ abstract class Model
     public static $table = '';
     public $id;
 
-    public static function findLastN()
+    public static function findLastThree()
     {
 
         $db = new Db();
