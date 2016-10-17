@@ -17,7 +17,7 @@
 <br>
 
 <div>
-    <a href="/PHP2/"> Назад </a>
+    <a href="/"> Назад </a>
 </div>
 
 </body>

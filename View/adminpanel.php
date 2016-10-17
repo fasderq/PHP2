@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактор</title>
-    <link href="/PHP2/Css/style.css" type="text/css" rel="stylesheet">
+    <link href="/Css/style.css" type="text/css" rel="stylesheet">
 
 </head>
 <body>
 <div id="panel">
-<a href="/PHP2/"> На главную</a>
+<a href="/"> На главную</a>
 <table>
     <tr>
         <td>
             <div class="left">
-                <form action="/PHP2/Controller/save.php" method="post">
+                <form action="/Controller/save.php" method="post">
 
                     <label class="textarea">
                         <div><input type="text"  name="header" value="<?php
@@ -65,7 +65,7 @@
                 foreach ($news as $value) :
                     ?>
 
-                    <form action="/PHP2/Controller/edit.php" method="post">
+                    <form action="/Controller/edit.php" method="post">
 
                         <?php echo $value->header; ?>
 
