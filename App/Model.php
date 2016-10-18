@@ -9,11 +9,11 @@ abstract class Model
     public static $table = '';
     public $id;
 
-    public static function findLastThree()
+    public static function findLastNews($n)
     {
 
         $db = new Db();
-        $data = $db->query('SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT 3', [], '\App\Model\Article');
+        $data = $db->query('SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $n, [], '\App\Model\Article');
         return $data;
 
     }
