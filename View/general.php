@@ -10,7 +10,7 @@
 
     <?php foreach ($lastnews as $value): ?>
 
-         <a href="/Controller/article.php?id=<?php echo $value->id ?>">
+         <a href="/article.php?id=<?php echo $value->id ?>">
 
         <?php echo $value->header; ?></a>
 
@@ -29,7 +29,7 @@
 <br>
 <br>
 
-<a href="/Controller/admin.php"> Админ панель</a>
+<a href="/admin.php"> Админ панель</a>
 
 
 </body>

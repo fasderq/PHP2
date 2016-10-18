@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../autoload.php';
+require_once __DIR__ . '/autoload.php';
 
 if (isset($_POST['edit'])) {
 
@@ -16,6 +16,6 @@ if (isset($_POST['edit'])) {
 
 $news = \App\Model\Article::findAll();
 
-include __DIR__ . '/../View/adminpanel.php';
+include __DIR__ . '/View/adminpanel.php';
 
 ?>

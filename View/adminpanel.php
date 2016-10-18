@@ -13,7 +13,7 @@
     <tr>
         <td>
             <div class="left">
-                <form action="/Controller/save.php" method="post">
+                <form action="/save.php" method="post">
 
                     <label class="textarea">
                         <div><input type="text"  name="header" value="<?php
@@ -65,7 +65,7 @@
                 foreach ($news as $value) :
                     ?>
 
-                    <form action="/Controller/edit.php" method="post">
+                    <form action="/edit.php" method="post">
 
                         <?php echo $value->header; ?>
 
