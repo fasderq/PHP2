@@ -8,7 +8,6 @@ class Config
 
     private static $configfile;
     private static $instance;
-    public $cfg;
 
     private function __construct()
     {
