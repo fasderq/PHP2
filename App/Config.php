@@ -6,11 +6,11 @@ class Config
 
 {
 
-    public static $configfile;
+    private static $configfile;
     private static $instance;
     public $cfg;
-    private function __construct()
 
+    private function __construct()
     {
         self::$configfile = __DIR__ . '/../Config/tsconfig.json';
 
@@ -22,14 +22,6 @@ class Config
     private function __clone()
     {
     }
-
-    public function getCfg()
-    {
-
-        return $this->cfg;
-
-    }
-
 
     public static function getInstance()
     {

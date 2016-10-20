@@ -15,7 +15,7 @@ class Db
     {
 
         $config = Config::getInstance();
-        $cfg = $config->getCfg();
+        $cfg = $config->cfg;
 
         $dsn = 'mysql:dbname=' . $cfg->db->dbname . ';host=' . $cfg->db->host . ';charset=' . $cfg->db->charset;
 
