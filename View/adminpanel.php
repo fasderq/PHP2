@@ -41,16 +41,11 @@
                                 ?></textarea></div>
 
                         <div>
-                            <button type="submit" name="id" value="<?php
-
-                            if (isset($edit->id))
-                            {
-                                echo $edit->id;
-                            } else {
-                                echo '';
-                            }
-
-                            ?>">Опубликовать</button>
+                            <?php   if (isset($edit->id)): ?>
+                            <button type="submit" name="id" value="<?php echo $edit->id; ?>">Сохранить</button>
+                            <?php else: ?>
+                            <button type="submit" name="id">Опубликовать</button>
+                            <?php endif; ?>
                         </div>
                     </label>
                 </form>
@@ -74,6 +69,20 @@
 
                         <?php echo $value->text; ?>
 
+                        <br>
+                        <br>
+
+                        <?php if(isset($value->author->name)) {
+
+                            echo $value->author->name;
+
+                        } else {
+
+                            echo 'Автор неизвестен';
+
+                        } ?>
+
+                        <br>
                         <br>
 
                         <button type="submit" name="edit" value="<?php echo $value->id; ?>">Редактировать</button>

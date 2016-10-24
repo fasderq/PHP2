@@ -8,8 +8,10 @@ $article->text = $_POST['text'];
 $article->id = $_POST['id'];
 $article->save();
 
-$news = \App\Model\Article::findAll();
+$view = new \App\View();
+$view->news = \App\Model\Article::findAll();
+$html = $view->render(__DIR__ . '/View/adminpanel.php');
 
-include __DIR__ . '/View/adminpanel.php';
+echo $html;
 
 ?>

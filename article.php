@@ -2,8 +2,10 @@
 
 require __DIR__ . '/autoload.php';
 
-$news = \App\Model\Article::findById($_GET['id']);
+$view = new \App\View();
+$view->news = \App\Model\Article::findById($_GET['id']);
+$html = $view->render(__DIR__ . '/View/onenew.php');
 
-require __DIR__ . '/View/onenew.php';
+echo $html;
 
 ?>

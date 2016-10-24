@@ -16,6 +16,19 @@
 <br>
 <br>
 
+<?php if(isset($news->author->name)) {
+
+    echo $news->author->name;
+
+} else {
+
+    echo 'Автор неизвестен';
+
+} ?>
+
+<br>
+<br>
+
 <div>
     <a href="/"> Назад </a>
 </div>

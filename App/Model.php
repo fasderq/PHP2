@@ -6,14 +6,14 @@ abstract class Model
 
 {
 
-    public static $table = '';
+    public static $table;
     public $id;
 
     public static function findLastNews(int $n)
     {
 
         $db = new Db();
-        $data = $db->query('SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $n, [], '\App\Model\Article');
+        $data = $db->query('SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $n, [], static::class);
         return $data;
 
     }

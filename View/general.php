@@ -8,16 +8,29 @@
 
 <div>
 
-    <?php foreach ($lastnews as $value): ?>
+    <?php foreach ($lastnews as $article): ?>
 
-         <a href="/article.php?id=<?php echo $value->id ?>">
+         <a href="/article.php?id=<?php echo $article->id ?>">
 
-        <?php echo $value->header; ?></a>
+        <?php echo $article->header; ?></a>
 
         <br>
         <br>
 
-        <?php echo $value->text; ?>
+        <?php echo $article->text; ?>
+
+        <br>
+        <br>
+
+        <?php if(isset($article->author->name)) {
+
+            echo $article->author->name;
+
+        } else {
+
+            echo 'Автор неизвестен';
+
+        } ?>
 
         <br>
         <br>
