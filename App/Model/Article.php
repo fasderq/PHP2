@@ -8,6 +8,7 @@ use App\Model;
  * Class Article
  * @package App\Model
  *
+ * @property string $table
  * @property int $id
  * @property string $header
  * @property string $text
@@ -33,7 +34,7 @@ class Article
 
             case ('author'):
 
-                    return Author::findById($this->author_id);
+                return Author::findById($this->author_id);
 
                 break;
 
