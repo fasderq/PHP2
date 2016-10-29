@@ -7,6 +7,8 @@ trait Sig
 
 {
 
+    protected $data = [];
+
     public function __set($key, $value)
     {
         $this->data[$key] = $value;

@@ -12,8 +12,6 @@ class View
 
     use Sig;
 
-    protected $data = [];
-
     public function display($template)
     {
 
@@ -39,7 +37,9 @@ class View
 
     public function count()
     {
+
         return count($this->data);
+
     }
 
 }

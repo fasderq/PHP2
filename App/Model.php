@@ -133,6 +133,15 @@ abstract class Model
 
     }
 
+    public static function findByLogin($login)
+    {
+        $db = new Db();
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE login =:login';
+        $data = $db->query($sql, [':login' => $login], static::class);
+
+        return $data[0] ?? false;
+    }
+
 }
 
 ?>

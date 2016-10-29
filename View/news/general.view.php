@@ -8,9 +8,9 @@
 
 <div>
 
-    <?php foreach ($lastnews as $article): ?>
+    <?php foreach ($news as $article): ?>
 
-         <a href="/article.php?id=<?php echo $article->id ?>">
+         <a href="/news/one/?id=<?php echo $article->id; ?>">
 
         <?php echo $article->header; ?></a>
 
@@ -42,7 +42,7 @@
 <br>
 <br>
 
-<a href="/admin.php"> Админ панель</a>
+<a href="/adminpanel/allnews"> Админ панель</a>
 
 
 </body>

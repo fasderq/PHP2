@@ -32,7 +32,7 @@ class Article
     {
         switch ($key) {
 
-            case ('author'):
+            case 'author':
 
                 return Author::findById($this->author_id);
 
@@ -52,7 +52,7 @@ class Article
     public function __isset($key)
     {
         switch ($key) {
-            case ('author'):
+            case 'author':
 
                 return !empty($this->author_id);
 
@@ -63,7 +63,6 @@ class Article
                 return false;
 
         }
-
     }
 
 }
