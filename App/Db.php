@@ -52,8 +52,7 @@ class Db
 
         if (false === $result) {
 
-            var_dump($sth->errorInfo());
-            die;
+            throw new \Exception('Ошибка подключения к БД');
 
         }
 

@@ -12,9 +12,24 @@ class News
 
     public function actionOne()
     {
-        $this->view->article = Article::findById($_GET['id']);
-        $html = $this->view->render(__DIR__ . '/../../View/news/article.view.php');
-        return $html;
+        $id = $_GET['id'];
+
+        if(Article::findById($id)) {
+
+            $this->view->article = Article::findById($id);
+            $html = $this->view->render(__DIR__ . '/../../View/news/article.view.php');
+
+            return $html;
+
+        } else {
+
+            $this->view->article = Article::findById(87);
+            $html = $this->view->render(__DIR__ . '/../../View/news/article.view.php');
+
+            return $html;
+
+        }
+
     }
 
     public function actionAll()

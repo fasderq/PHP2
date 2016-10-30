@@ -14,30 +14,35 @@ abstract class Controller
 
         $this->view = new View();
 
+    }
+
+        public function access()
+    {
+
+        return method_exists(static::class, $this->action);
 
     }
 
     public function action($action)
     {
-        $this->action = $action;
 
         if ($this->access()) {
 
-            return $action;
+          $obj = static::class;
+
+            $ctrl = new $obj;
+            $ctrl->action = $action;
+            $html = $ctrl->$action();
+
+            return $html;
 
         } else {
 
-            return false;
+            $message = 'Доступ закрыт';
+
+            return $message;
 
         }
-
-    }
-
-    public function access()
-    {
-
-        return method_exists(static::class, $this->action);
-
     }
 
 }
