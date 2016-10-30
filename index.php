@@ -9,11 +9,6 @@ $ctrlClassName = '\App\Controllers\\' . ucfirst($ctrlRequest);
 $ctrl = new $ctrlClassName;
 
 $actRequest = !empty($parts_uri[2]) ? $parts_uri[2] : 'Default';
-$actMethodName = 'action' . ucfirst($actRequest);
-$ctrl->action = $actMethodName;
-
-$html = $ctrl->action($actMethodName);
-
-echo $html;
+$ctrl->action($actRequest);
 
 ?>

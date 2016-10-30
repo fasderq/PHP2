@@ -19,14 +19,14 @@ class News
             $this->view->article = Article::findById($id);
             $html = $this->view->render(__DIR__ . '/../../View/news/article.view.php');
 
-            return $html;
+            echo $html;
 
         } else {
 
             $this->view->article = Article::findById(87);
             $html = $this->view->render(__DIR__ . '/../../View/news/article.view.php');
 
-            return $html;
+            echo $html;
 
         }
 
@@ -37,7 +37,8 @@ class News
 
         $this->view->news = Article::findAll();
         $html = $this->view->render(__DIR__ . '/../../View/news/general.view.php');
-        return $html;
+
+        echo $html;
 
     }
 

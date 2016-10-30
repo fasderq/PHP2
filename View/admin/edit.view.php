@@ -43,7 +43,7 @@
 <br>
 
 <div>
-    <a href="/admin.php"> Назад </a>
+    <a href="/adminpanel/allnews"> Назад </a>
 </div>
 <br>
 <br>

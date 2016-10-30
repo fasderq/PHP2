@@ -26,21 +26,18 @@ abstract class Controller
     public function action($action)
     {
 
+        $this->action = 'action' . ucfirst($action) ;
+        $actionName = $this->action;
+
         if ($this->access()) {
 
-          $obj = static::class;
+           return $this->$actionName();
 
-            $ctrl = new $obj;
-            $ctrl->action = $action;
-            $html = $ctrl->$action();
-
-            return $html;
 
         } else {
 
-            $message = 'Доступ закрыт';
-
-            return $message;
+            echo 'доступ закрыт';
+            die;
 
         }
     }

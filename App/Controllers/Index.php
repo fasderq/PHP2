@@ -15,7 +15,8 @@ class Index
 
         $this->view->news = Article::findLastNews(3);
         $html = $this->view->render(__DIR__ . '/../../View/news/general.view.php');
-        return $html;
+
+        echo $html;
 
     }
 }

@@ -16,7 +16,7 @@ class Adminpanel
         $this->view->news = Article::findAll();
         $html = $this->view->render(__DIR__ . '/../../View/admin/adminpanel.view.php');
 
-        return $html;
+        echo $html;
 
     }
 
@@ -34,13 +34,13 @@ class Adminpanel
             $article->save();
 
             $html = $this->view->render(__DIR__ . '/../../View/admin/edit.view.php');
-            return $html;
+            echo $html;
 
         } else {
 
             $this->view->news = Article::findById($_GET['id']);
             $html = $this->view->render(__DIR__ . '/../../View/admin/edit.view.php');
-            return $html;
+            echo $html;
 
         }
 
@@ -58,12 +58,12 @@ class Adminpanel
             $article->save();
 
             $html = $this->view->render(__DIR__ . '/../../View/admin/add.view.php');
-            return $html;
+            echo $html;
 
         } else {
 
             $html = $this->view->render(__DIR__ . '/../../View/admin/add.view.php');
-            return $html;
+            echo $html;
 
         }
     }
