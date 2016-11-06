@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт</title>
+    <link rel="stylesheet" href="/Css/style.css">
+</head>
+<body>
+    <div class="main">
+
+        <div class="header">
+            <a href="/news/all">Архив</a>
+            <br>
+            <a href="/adminpanel/allnews">админ панель</a>
+        </div>
+
+        <div class="center">
+
+            <div class="page"></div>
+
+            <div class="news">
+                {% for article in news %}
+                <div class="article">
+                    <a href="/news/one/?id={{ article.id }}">
+                    {{ article.header }}
+                    </a>
+                    <br>
+                    <br>
+                    {{ article.text }}
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="footer">
+        подвал
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,11 +1,15 @@
 <?php
 
-function __autoload($className)
-{
+require __DIR__ . '/vendor/autoload.php';
 
-    $path =  __DIR__ . '/' . str_replace('\\', '/', $className) . '.php';
+   spl_autoload_register(function ($class){
+        $path = __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
+        if (file_exists($path)) {
+            require $path;
+        }
+    });
 
-    require $path;
 
-}
+
+
 

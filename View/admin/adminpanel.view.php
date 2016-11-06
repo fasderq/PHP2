@@ -24,6 +24,7 @@
         <p><?php echo $artile->author->name ?? 'без автора'; ?></p>
         <br>
     <a href="/adminpanel/edit/?id=<?php echo $artile->id; ?>"> Редактировать </a>
+    <a href="/adminpanel/delete/?id=<?php echo $artile->id; ?>"> Удалить </a>
     <?php endforeach; ?>
 
 

@@ -11,21 +11,16 @@ abstract class Controller
 
     public function __construct()
     {
-
         $this->view = new View();
-
     }
 
         public function access()
     {
-
         return method_exists(static::class, $this->action);
-
     }
 
     public function action($action)
     {
-
         $this->action = 'action' . ucfirst($action) ;
         $actionName = $this->action;
 
@@ -33,11 +28,9 @@ abstract class Controller
 
            return $this->$actionName();
 
-
         } else {
 
-            echo 'доступ закрыт';
-            die;
+            throw new \NotFound('Ошибка 404 - не найдено');
 
         }
     }

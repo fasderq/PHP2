@@ -1,8 +1,11 @@
 <?php
 
-namespace App;
 
-require_once __DIR__ . '/Sig.php';
+
+namespace App;
+//    require __DIR__ . '/../vendor/autoload.php';
+
+//require_once __DIR__ . '/Sig.php';
 
 class View
 
@@ -11,6 +14,17 @@ class View
 {
 
     use Sig;
+
+    protected $twig;
+
+    public function __construct()
+    {
+
+        $this->twig = new \Twig_Environment(
+            new \Twig_Loader_Filesystem([__DIR__ . '/../View'])
+        );
+
+    }
 
     public function display($template)
     {
@@ -21,18 +35,9 @@ class View
 
     public function render($template)
     {
-        ob_start();
 
-        foreach ($this->data as $key => $value){
+        return $this->twig->render($template, $this->data);
 
-            $$key = $value;
-
-        }
-
-        include $template;
-        $html = ob_get_contents();
-        ob_end_clean();
-        return $html;
     }
 
     public function count()

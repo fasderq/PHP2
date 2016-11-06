@@ -22,47 +22,45 @@ abstract class Model
     {
         $db = new Db();
         $data = $db->query(
+
             'SELECT * FROM ' . static::$table,
             [],
             static::class
+
         );
 
         return $data;
-
     }
 
     public static function findById($id)
     {
-
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE id =:id';
         $data = $db->query($sql, [':id' => $id], static::class);
 
         return $data[0] ?? false;
-
     }
 
     public function isNew()
     {
-
         return empty($this->id);
-
     }
 
     public function save()
     {
-
         if (true == $this->isNew()) {
-            $this->insert();
-        } else {
-            $this->update();
-        }
 
+            $this->insert();
+
+        } else {
+
+            $this->update();
+
+        }
     }
 
     public function insert()
     {
-
         $columns = [];
         $binds = [];
         $data = [];
@@ -78,6 +76,7 @@ abstract class Model
             $columns[] = $column;
             $binds[] = ':' . $column;
             $data[':' . $column] = $value;
+
         }
 
         if ($this->isNew()) {
@@ -93,8 +92,6 @@ abstract class Model
         $db = new Db();
         $db->execute($sql, $data);
         $this->id = $db->lastInsertId();
-
-
     }
 
     public function update()
@@ -115,12 +112,10 @@ abstract class Model
         }
 
         $data[':id'] = $this->id;
-
         $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $dataset) . ' WHERE id=:id';
 
         $db = new Db();
         $db->execute($sql, $data);
-
     }
 
     public function delete()
@@ -133,13 +128,27 @@ abstract class Model
 
     }
 
-    public static function findByLogin($login)
+    public function fill(array $data)
     {
-        $db = new Db();
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE login =:login';
-        $data = $db->query($sql, [':login' => $login], static::class);
+        $errors = new MultiExeption();
 
-        return $data[0] ?? false;
+        foreach ($data as $key => $value) {
+            try{
+
+                if('id' == $key) {
+                    throw new \Exception('нельзя присваивать id');
+                }
+
+                $this->$key = $value;
+
+            } catch (\Exception $e) {
+                $errors->add($e);
+            }
+        }
+
+        if (count($errors) > 0) {
+            throw $errors;
+        }
     }
 
 }

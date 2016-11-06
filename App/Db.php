@@ -2,8 +2,6 @@
 
 namespace App;
 
-require_once __DIR__ . '/Config.php';
-
 class Db
 
 {
@@ -11,7 +9,6 @@ class Db
     protected $dbh;
 
     public function __construct()
-
     {
 
         $config = Config::getInstance();
@@ -19,13 +16,20 @@ class Db
 
         $dsn = 'mysql:dbname=' . $cfg->db->dbname . ';host=' . $cfg->db->host . ';charset=' . $cfg->db->charset;
 
-        $this->dbh = new \PDO($dsn, $cfg->db->user, $cfg->db->passw);
+        try {
+
+            $this->dbh = new \PDO($dsn, $cfg->db->user, $cfg->db->passw);
+
+        } catch (\Exception $e) {
+
+            throw new \Exception('Ошибка соед. с базой данных');
+
+        }
 
     }
 
 
     public function execute(string $sql, array $data = [])
-
     {
 
         $sth = $this->dbh->prepare($sql);
@@ -33,8 +37,7 @@ class Db
 
         if (false === $result) {
 
-            var_dump($sth->errorInfo());
-            die;
+            throw new \Exception('Ошибка подключения к БД');
 
         }
 
@@ -44,9 +47,7 @@ class Db
 
 
     public function query(string $sql, array $data = [], $class = null)
-
     {
-
         $sth = $this->dbh->prepare($sql);
         $result = $sth->execute($data);
 
@@ -65,6 +66,57 @@ class Db
             return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
 
         }
+    }
+
+
+    public function queryEach(string $sql, array $data = [], $class = null)
+    {
+
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute($data);
+
+        if (false === $result) {
+
+            throw new \Exception('Ошибка подключения к БД');
+
+        }
+
+        if(null === $class) {
+
+            $row = function () use ($sth) {
+
+                return $sth->fetch(\PDO::FETCH_ASSOC);
+
+            };
+
+        } else {
+
+            $row = function () use ($sth, $class) {
+
+                return $sth->fetch(\PDO::FETCH_CLASS, $class);
+
+            };
+
+        }
+
+        $generator = function () use ($row) {
+
+            while ($string = $row()) {
+
+                yield $string;
+
+            }
+
+        };
+
+        foreach ($generator() as $string) {
+
+           $rowdata[] = $string;
+
+            }
+
+            return $rowdata;
+
     }
 
     public function lastInsertId()

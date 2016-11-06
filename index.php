@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/autoload.php';
+require __DIR__ . '/autoload.php';
 
 $parts_uri = explode('/' , $_SERVER['REQUEST_URI']);
 
@@ -9,6 +9,18 @@ $ctrlClassName = '\App\Controllers\\' . ucfirst($ctrlRequest);
 $ctrl = new $ctrlClassName;
 
 $actRequest = !empty($parts_uri[2]) ? $parts_uri[2] : 'Default';
-$ctrl->action($actRequest);
+
+try{
+
+    $ctrl->action($actRequest);
+
+} catch (Exception $e) {
+
+    $view = new \App\View();
+    $view->error = $e->getMessage();
+    $view->display('news/test.general.view.php.html');
+    echo $e->getMessage();
+
+}
 
 ?>

@@ -5,41 +5,41 @@ namespace App\Controllers;
 use App\Controller;
 use App\Model\Article;
 
-
 class News
     extends Controller
 {
 
     public function actionOne()
     {
-        $id = $_GET['id'];
+        $id = $_GET['id'] ?? null;
+        $article = Article::findById($id);
 
-        if(Article::findById($id)) {
+        if (empty($article)) {
 
-            $this->view->article = Article::findById($id);
-            $html = $this->view->render(__DIR__ . '/../../View/news/article.view.php');
-
-            echo $html;
+            throw new \Exception('Такой статьи не существует :(');
 
         } else {
 
-            $this->view->article = Article::findById(87);
-            $html = $this->view->render(__DIR__ . '/../../View/news/article.view.php');
-
-            echo $html;
+            $this->view->article = $article;
+            $this->view->display('news/article.view.html');
 
         }
-
     }
 
     public function actionAll()
     {
+        $news = Article::findAll();
 
-        $this->view->news = Article::findAll();
-        $html = $this->view->render(__DIR__ . '/../../View/news/general.view.php');
+        if (empty($news)) {
 
-        echo $html;
+            throw new \Exception('Новостей нет');
 
+        } else {
+
+            $this->view->news = $news;
+            $this->view->display('news/allnews.view.html');
+
+        }
     }
 
 }

@@ -12,13 +12,20 @@ class Index
 
     public function actionDefault()
     {
+        $news= Article::findLastNews(3);
 
-        $this->view->news = Article::findLastNews(3);
-        $html = $this->view->render(__DIR__ . '/../../View/news/general.view.php');
+        if(empty($news)) {
 
-        echo $html;
+            throw new \Exception('Статьи не найдены');
 
+        } else {
+
+            $this->view->news = $news;
+            $this->view->display('news/general.view.html');
+
+        }
     }
+
 }
 
 ?>

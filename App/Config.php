@@ -12,9 +12,7 @@ class Config
     private function __construct()
     {
         self::$configfile = __DIR__ . '/../Config/tsconfig.json';
-
         $json = file_get_contents(self::$configfile);
-
         $this->cfg = json_decode($json);
     }
 

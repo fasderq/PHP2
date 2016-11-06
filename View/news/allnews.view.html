@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Архив новостей</title>
+    <link rel="stylesheet" href="/Css/style.css">
+</head>
+<body>
+
+<div class="main">
+    {% for article in news %}
+    <div class="article_full">
+        {{ article.header }}
+        <br>
+        <br>
+        {{ article.text }}
+        <br>
+        <br>
+        {{ article.author.name }}
+    </div>
+    {% endfor %}
+</div>
+<div>
+    <a href="/">На главную</a>
+</div>
+
+</body>
+</html>
