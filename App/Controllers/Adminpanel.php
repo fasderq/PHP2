@@ -92,8 +92,8 @@ class Adminpanel
 
     public function actionEach()
     {
-        $s = new \App\Model\Article();
-        $news = $s->generator();
+        $article = new \App\Model\Article();
+        $news = $article->generator();
 
         $this->view->news = $news;
         $this->view->display('admin/template.php');
@@ -106,8 +106,7 @@ class Adminpanel
         $functions= Functions::getFunctions();
 
         $table = new AdminDataTable($models, $functions);
-        $table->render('admin/admintable.view.php');
-
+        $table->display('admin/admintable.view.html');
     }
 
 }
