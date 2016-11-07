@@ -85,13 +85,13 @@ class Db
 
             $row = function () use ($sth) {
 
-                return $sth->fetch(\PDO::FETCH_ASSOC);
+                return $sth->fetch(\PDO::FETCH_LAZY);
 
             };
 
         } else {
 
-            $row = function () use ($sth, $class) {
+                $row = function () use ($sth, $class) {
 
                 return $sth->fetch(\PDO::FETCH_CLASS, $class);
 
@@ -109,13 +109,7 @@ class Db
 
         };
 
-        foreach ($generator() as $string) {
-
-           $rowdata[] = $string;
-
-            }
-
-            return $rowdata;
+        return $generator;
 
     }
 

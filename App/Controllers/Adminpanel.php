@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\AdminDataTable;
 use App\Auth;
 use App\Model\Article;
 
@@ -15,6 +16,7 @@ class Adminpanel
 
 
             $news = Article::findAll();
+            $table = new AdminDataTable($news, []);
 
             if (empty($news)) {
 
@@ -22,8 +24,10 @@ class Adminpanel
 
             } else {
 
-                $this->view->news = $news;
-                $this->view->display('news/allnews.view.html');
+                $this->view->table = $table;
+                var_dump($table->models);
+//                $this->view->news = $news;
+                $this->view->display('admin/template.php.html');
 
             }
 
@@ -89,6 +93,18 @@ class Adminpanel
             throw new \Exception('не удалось удалить');
 
         }
+    }
+
+    public function actionEach()
+    {
+
+
+        $s = new \App\Model\Article();
+        $news = $s->generator();
+
+        include __DIR__ . '/../../View/admin/template.php';
+
+
     }
 
 }
