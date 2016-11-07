@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\AdminDataTable;
 use App\Auth;
+use App\Functions;
 use App\Model\Article;
 
 class Adminpanel
@@ -104,6 +105,22 @@ class Adminpanel
 
         include __DIR__ . '/../../View/admin/template.php';
 
+
+    }
+
+    public function actionAdminDataTable()
+    {
+        $models = Article::findAll();
+        $functions= Functions::getFunctions();
+
+        $dataTable = new AdminDataTable($models, $functions);
+
+        foreach ($dataTable->functions as $key => $function) {
+            $data[$key] = array_map($functions[$key], $dataTable->models);
+        }
+
+        $this->view->data = $data;
+        $this->view->display('admin/data_table.view.html');
 
     }
 
