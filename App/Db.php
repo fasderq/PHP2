@@ -59,9 +59,23 @@ class Db
         }
 
         if (null === $class) {
-            return $sth->fetchAll();
+
+            while ($row = $sth->fetch()) {
+                    $data[] = $row;
+            }
+
+                return $data;
+
         } else {
-            return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+            while ($row = $sth->fetch(\PDO::FETCH_CLASS, $class)){
+
+                while ($row = $sth->fetch()) {
+                    $data[] = $row;
+                }
+            }
+
+            return $data;
+
         }
     }
 
