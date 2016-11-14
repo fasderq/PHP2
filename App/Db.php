@@ -70,6 +70,7 @@ class Db
             while ($row = $sth->fetch(\PDO::FETCH_CLASS, $class)){
 
                 while ($row = $sth->fetch()) {
+
                     $data[] = $row;
                 }
             }
