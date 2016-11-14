@@ -71,7 +71,6 @@ class Db
 
     public function queryEach(string $sql, array $data = [], $class = null)
     {
-
         $sth = $this->dbh->prepare($sql);
         $result = $sth->execute($data);
 
@@ -81,37 +80,17 @@ class Db
 
         }
 
-        if(null === $class) {
+        if (null === $class) {
 
-            $row = function () use ($sth) {
-
-                return $sth->fetch(\PDO::FETCH_LAZY);
-
-            };
+            return $sth->fetch();
 
         } else {
 
-                $row = function () use ($sth, $class) {
-
-                return $sth->fetch(\PDO::FETCH_CLASS, $class);
-
-            };
+            return $sth->fetch(\PDO::FETCH_CLASS, $class);
 
         }
-
-        $generator = function () use ($row) {
-
-            while ($string = $row()) {
-
-                yield $string;
-
-            }
-
-        };
-
-        return $generator;
-
     }
+
 
     public function lastInsertId()
     {
