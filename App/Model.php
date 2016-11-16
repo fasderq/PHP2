@@ -151,14 +151,13 @@ abstract class Model
         }
     }
 
- public function generator()
+ public static function findAllFetch()
  {
-
      $db = new Db();
-//     $generator = $db->queryEach('SELECT * FROM ' . static::$table , [], static::class);
-     $generator = $db->queryEach('SELECT * FROM worldtoday');
-     return $generator;
+     $sql = 'SELECT * FROM ' . static::$table;
+     $data = $db->queryEach($sql, [], static::class);
 
+     return $data;
 
  }
 

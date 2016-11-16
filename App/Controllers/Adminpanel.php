@@ -92,11 +92,10 @@ class Adminpanel
 
     public function actionEach()
     {
-        $article = new \App\Model\Article();
-        $news = $article->generator();
-
+        $news = Article::findAllFetch();
         $this->view->news = $news;
-        $this->view->display('admin/template.php');
+
+        $this->view->display('admin/adminpalnel.view.html');
 
     }
 
