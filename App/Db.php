@@ -17,7 +17,7 @@ class Db
         try {
             $this->dbh = new \PDO($dsn, $cfg->db->user, $cfg->db->passw);
         } catch (\Exception $e) {
-            throw new \Exception('Ошибка соед. с базой данных');
+            throw new \Exception('Данные для подключения к БД неверны');
         }
     }
 
