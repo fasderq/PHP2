@@ -27,7 +27,7 @@ class Db
         $result = $sth->execute($data);
 
         if (false === $result) {
-            throw new \Exception('Ошибка подключения к БД');
+            throw new \Exception('Ошибка запроса к БД');
         }
         return true;
     }
@@ -38,7 +38,7 @@ class Db
         $result = $sth->execute($data);
 
         if (false === $result) {
-            throw new \Exception('Ошибка подключения к БД');
+            throw new \Exception('Ошибка запроса к БД');
         }
 
         if (null === $class) {
@@ -55,25 +55,19 @@ class Db
         $result = $sth->execute($data);
 
         if (false === $result) {
-            throw new \Exception('Ошибка подключения к БД');
+            throw new \Exception('Ошибка запроса к БД');
         }
-
         if (null === $class) {
 
             while ($row = $sth->fetch()) {
-                    $data[] = $row;
+                yield $row;
             }
-
-                return $data;
 
         } else {
 
             while ($row = $sth->fetch(\PDO::FETCH_CLASS, $class)){
-                $data[] = $row;
+                yield $row;
             }
-
-            return $data;
-
         }
     }
 
