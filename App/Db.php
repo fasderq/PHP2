@@ -67,12 +67,9 @@ class Db
                 return $data;
 
         } else {
+
             while ($row = $sth->fetch(\PDO::FETCH_CLASS, $class)){
-
-                while ($row = $sth->fetch()) {
-
-                    $data[] = $row;
-                }
+                $data[] = $row;
             }
 
             return $data;
