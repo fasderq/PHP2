@@ -65,7 +65,7 @@ class Db
 
         } else {
 
-            while ($row = $sth->fetch(\PDO::FETCH_CLASS, $class)){
+            while ($row = $sth->fetch(\PDO::FETCH_CLASS | \PDO::FETCH_CLASSTYPE)){
                 yield $row;
             }
         }
